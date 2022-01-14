@@ -1,0 +1,30 @@
+import tkinter
+from PIL import Image,ImageTk
+import random
+
+root = tkinter.Tk()
+root.geometry('400x400')
+root.title('dice_simulator')
+
+blankline = tkinter.Label(root, text="")
+blankline.pack()
+headinglabel = tkinter.Label(root, text="Dice Simulator ! ", fg="white",  bg="black", font="Helvetica 16 bold italic")
+headinglabel.pack()
+
+dice = ['C:\\Users\\niyat\\Pictures\\Image\\die1.png', 'C:\\Users\\niyat\\Pictures\\Image\\die2.png', 'C:\\Users\\niyat\\Pictures\\Image\\die3.png', 'C:\\Users\\niyat\\Pictures\\Image\\die4.png', 'C:\\Users\\niyat\\Pictures\\Image\\die5.png', 'C:\\Users\\niyat\\Pictures\\Image\\die6.png']
+diceimage = ImageTk.PhotoImage(Image.open(random.choice(dice)))
+
+imagelebel = tkinter.Label(root, image=diceimage)
+imagelebel.pack(expand=True)
+
+
+def rolling_dice():
+    diceimage = ImageTk.PhotoImage(Image.open(random.choice(dice)))
+
+    imagelebel.configure(image=diceimage)
+    imagelebel.image = diceimage
+
+
+button = tkinter.Button(root, text="Roll the Dice", fg="black", bg="light blue", command=rolling_dice)
+button.pack(expand=True)
+root.mainloop()
